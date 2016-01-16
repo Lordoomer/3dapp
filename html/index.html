@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html onkeydown="processKeyDown(event)" onkeyup="processKeyUp(event)" onkeypress="processKeyPress(event)">
+<head>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="/ff4dark/js/js3dapp.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="ff4dark/css/3dapp.css" /> 
+	<style  id="MyStyleTag" type="text/css">
+	</style>
+</head>
+<body>
+	<div id="MyToolBar">
+		<input id="FileMenuButton" class="buttonclass1" type="button" value="File" />
+		<input id="ImagesButton" class="buttonclass1" type="button" value="Images" />
+		<input id="ObjectPanelButton" class="buttonclass1" type="button" value="Objects" />
+		<input id="ToggleChat" class="buttonclass1" type="button" value="Chat" />
+		<input id="ToggleProperties" class="buttonclass1" type="button" value="Properties" />
+		<input id="ToggleGamepad" class="buttonclass1" type="button" value="Keybinding" />
+		<input id="Ajax_Button" class="buttonclass1" type="button" value="Ajax" />	
+		<span>Current map: </span><label id="CurrentMap">None</label>
+	<!--	<input class="buttonclass1" class="bottomInterfaces" id="RegisterButton" type="button" value="Register" />
+		<input class="bottomInterfaces" type="text" id="username" value="myusername"/>  -->
+	</div>	
+	<div id="global">
+				<div id="iframecontainer">
+					<p>
+						<input type="button" id="browserButton" value="Add more" class="buttonclass1">
+						<div id="MyUploadbarFrame"><label id="progresslabel"> 0%</label></div><img id="MyUploadProgressBar" src="images/loading.gif">
+					<p>
+					<div id="imagecontainer">
+						
+					</div>
+				</div>	
+			<div id="ObjectPanel">
+				<input class="buttonclass1" class="bottomInterfaces" id="CreateObjectButton" type="button" value="Create 3D Object" />
+				<input class="inputText" type="text" id="create3dObjectName" onmouseover="Hovering()" onmouseout="NotHovering()"  value="name"/>
+				<label id="ErrorCreating3DobjectLabel"></label>
+			</div>
+			<div id="FileDiv">
+				<p>
+					<input class="buttonclass1" class="bottomInterfaces" id="CreateMap" type="button" value="New map" />
+					<input class="inputText" type="text" id="NewMap" onmouseover="Hovering()" onmouseout="NotHovering()"  value="map1"/>	
+				</p>
+				<p>
+					<input class="buttonclass1" class="bottomInterfaces" id="LoadMapButton" type="button" value="Load Map" />
+					<input class="inputText" type="text" id="LoadMap" onmouseover="Hovering()" onmouseout="NotHovering()"  value="map2"/>	
+				</p>		
+				<p><label id="LoadingMap"></label></p>	
+			</div>
+				<iframe id="MyUploadFrame2" >
+				</iframe>
+		<div id="interfaceC">
+
+		</div>
+		<div onmouseover="Hovering()" onmouseout="NotHovering()" id="interfaceD">
+
+		<p onmouseover="Hovering()" onmouseout="NotHovering()">
+			Name :<span id="MySelectionIdentifier" ></span><textarea rows="4" cols="23" onkeydown="ChangeText()"; id="MyTextPropertie" class="buttonclass1" type="text" onmouseover="Mainfocus = 'TextProperties';" onblur="Mainfocus = 'empty';" >	
+			</textarea>
+		</p>
+		<p  style="position: relative; margin-bottom:55px;"onmouseover="Hovering()" onmouseout="NotHovering()">
+			Obstacle :<input type="checkbox" value="false" onmouseover="Hovering()" onchange="ChangeObstacle()" onmouseout="NotHovering()" id="ObstacleButton" />
+		</p>
+		<h2   style="position: relative; margin-bottom:5px;"onmouseover="Hovering()" onmouseout="NotHovering()">	
+			Z-index :<input type="text" value="false" class="buttonclass1" onmouseover="Hovering()" onchange="ChangeZ()" onmouseout="NotHovering()" id="ZindexButton" readonly/>
+			<img id="arrowUp" src="images/arrow.png"><img id="arrowDown" src="images/arrow.png">
+		</h2>
+		<p  style="position: relative;"onmouseover="Hovering()" onmouseout="NotHovering()">
+			Background image resize :<input type="checkbox" value="false" onmouseover="Hovering()" onchange="ChangeBackgroundResize()" onmouseout="NotHovering()" id="BackgroundResizeButton" />
+		</p>
+		</div>
+		<div id="interfaceB">
+			<div id="tchat">
+
+				<p></p>
+			</div>
+			 	<p id="sendtchat">
+			<input id="chatbox" class="inputText" onblur="Mainfocus = 'empty';" onmouseover="Mainfocus = 'tchat'; if(document.getElementById(selectedobject)){document.getElementById(selectedobject).style.border = '0px solid black'};  selectedobject = 'empty';" type="text" name="message"  /> 
+			  		<input id="SendChatButton" class="buttonclass1" type="button" value="Send" />
+				</p>
+		</div>
+		<input  id="MyNewName" class="invisible" type="text">
+		<div id="GamepadPower">
+					<div id="gamepadPrompt"></div>
+					<div id="gamepadDisplay"></div>
+		</div>
+	</div>
+</body>
+</html>
